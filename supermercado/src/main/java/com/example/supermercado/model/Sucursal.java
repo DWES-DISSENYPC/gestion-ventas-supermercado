@@ -1,7 +1,5 @@
 package com.example.supermercado.model;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -15,20 +13,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter
+@Setter @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Sucursal {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = (GenerationType.IDENTITY))
     private Long id;
 
     private String nombre;
     private String direccion;
 
-    @OneToMany(mappedBy = "sucursal")
-    private List<Venta> ventas = new ArrayList<>();
+    @OneToMany
+    private List<Venta> lista;
 
-   
 }
