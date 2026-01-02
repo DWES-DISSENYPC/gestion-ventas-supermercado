@@ -1,6 +1,7 @@
 package com.example.supermercado.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -30,7 +31,7 @@ public class Venta {
     private LocalDateTime fecha;
 
     @OneToMany
-    private List<LineasVenta> lineas;
+    private List<LineasVenta> lineas = new ArrayList<>();
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.supermercado.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -26,6 +27,6 @@ public class Sucursal {
     private String direccion;
 
     @OneToMany
-    private List<Venta> lista;
+    private List<Venta> lista = new ArrayList<>();
 
 }
