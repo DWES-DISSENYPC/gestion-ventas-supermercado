@@ -36,7 +36,7 @@ public class ProductoController {
     public String listar(Model model) {
 
         List<ProductoDTO> dto = ps.listar();
-        model.addAttribute("p", dto);
+        model.addAttribute("productos", dto);
         return "productos/productos";
     }
 

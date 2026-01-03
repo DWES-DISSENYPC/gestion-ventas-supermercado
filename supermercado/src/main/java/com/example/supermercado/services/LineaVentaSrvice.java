@@ -23,12 +23,17 @@ public class LineaVentaSrvice {
 
     public LineasVentaDTO entityToDto(LineasVenta l) {
 
+        Producto producto = l.getProducto();
+        Double precio = producto.getPrecio();
+        String nombre = producto.getNombre();
         return new LineasVentaDTO(
-    
+            
             l.getId(),
-            l.getProducto().getId(),
+            producto.getId(),
             l.getCantidad(),
-            l.getVenta().getId()
+            l.getVenta().getId(),
+            nombre,
+            precio
 
         );
     }

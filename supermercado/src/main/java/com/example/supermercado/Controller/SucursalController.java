@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
-@RequestMapping("/sucursal")
+@RequestMapping("/sucursales")
 public class SucursalController {
 
     private SucursalService ss;

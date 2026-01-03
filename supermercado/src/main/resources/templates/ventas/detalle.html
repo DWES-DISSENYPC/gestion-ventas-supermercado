@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1 th:text="|Detalle de la venta con fecha ${v.fecha}|"></h1>
+
+    <p th:text="|Sucursal: ${v.idSucursal}|"></p>
+    <table>
+
+        <tr>
+
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
+
+        </tr>
+
+        <tr th:each="l : v.lineas">
+
+            <td th:text="${l.nombre}"></td>
+            <td th:text="${l.cantidad}"></td>
+            <td th:text="${l.precio}"></td>
+            <td th:text="${l.cantidad * l.precio}"></td>
+        </tr>
+    </table>
+
+</body>
+</html>

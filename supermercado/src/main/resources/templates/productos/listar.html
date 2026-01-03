@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Lista de productos</h1>
+
+<table border="1" cellpadding="6" cellspacing="0"> 
+    <thead> 
+        <tr> 
+            <th>Nombre</th> 
+            <th>Precio (€)</th> 
+            <th>Acciones</th> 
+        </tr> 
+    </thead> 
+    <tbody> 
+        <tr th:each="p : ${productos}"> 
+            <td th:text="${p.nombre}"></td> 
+            <!-- Formato de precio con 2 decimales --> 
+            <td th:text="${#numbers.formatDecimal(p.precio, 1, 'POINT', 2, 'POINT')}"></td> 
+            <td> 
+                <!-- Botón editar --> 
+                <a th:href="@{/productos/editar/{id}(id=${p.id})}">Editar</a> 
+                <!-- Botón borrar --> 
+                <a th:href="@{/productos/eliminar/{id}(id=${p.id})}"> Borrar </a> </td> 
+            </tr> 
+        </tbody> 
+    </table>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nueva Venta</title>
+</head>
+<body>
+
+<h1>Nueva Venta</h1>
+
+<!-- FORMULARIO PRINCIPAL -->
+<form th:action="@{/ventas/nueva}" th:object="${v}" method="post">
+
+    <label>Sucursal:</label>
+    <select th:field="*{idSucursal}">
+        <option value="">-- Seleccione --</option>
+        <option th:each="suc : ${s}"
+                th:value="${suc.id}"
+                th:text="${suc.nombre}">
+        </option>
+    </select>
+
+    <hr>
+
+    <!-- TABLA DE LÍNEAS YA AÑADIDAS -->
+    <h3>Líneas añadidas</h3>
+
+    <table border="1">
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+        </tr>
+
+        <tr th:each="l, i : *{lineas}">
+            <td th:text="${l.nombre}"></td>
+            <td th:text="${l.cantidad}"></td>
+
+            <!-- Campos ocultos para enviar las líneas -->
+            <input type="hidden" th:field="*{lineas[__${i.index}__].idProducto}">
+            <input type="hidden" th:field="*{lineas[__${i.index}__].cantidad}">
+        </tr>
+    </table>
+
+    <br>
+
+    <button type="submit">Guardar venta cuando ya esten todas las lineas</button>
+</form>
+
+<hr>
+
+<!-- FORMULARIO SECUNDARIO (SEPARADO) PARA AÑADIR LÍNEAS -->
+<form th:action="@{/ventas/nueva/linea}" method="post">
+
+    <label>Producto:</label>
+    <select name="idProducto">
+        <option value="">-- Seleccione --</option>
+        <option th:each="prod : ${p}"
+                th:value="${prod.id}"
+                th:text="${prod.nombre}">
+        </option>
+    </select>
+
+    <label>Cantidad:</label>
+    <input type="number" name="cantidad" min="1">
+
+    <button type="submit">Añadir línea</button>
+</form>
+
+
+    <hr>
+
+    <!-- TABLA DE LÍNEAS -->
+    <h3>Líneas añadidas</h3>
+
+    <table border="1">
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+        </tr>
+
+        <tr th:each="l, i : *{lineas}">
+            <td th:text="${l.nombre}"></td>
+            <td th:text="${l.cantidad}"></td>
+
+            <!-- Campos ocultos para enviar las líneas -->
+            <input type="hidden" th:field="*{lineas[__${i.index}__].idProducto}">
+            <input type="hidden" th:field="*{lineas[__${i.index}__].cantidad}">
+        </tr>
+    </table>
+
+    <br>
+
+
+
+</body>
+</html>

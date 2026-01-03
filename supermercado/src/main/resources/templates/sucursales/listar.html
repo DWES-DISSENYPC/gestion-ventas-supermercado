@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>LISTA DE SUCURSALE</h1>
+
+    <table>
+
+        <th>
+
+            <td>Sucursal</td>
+            <td>Direccion</td>
+
+        </th>
+        <tr th:each="${s: sucursales}">
+
+            <td><a th:href="@{/sucursales/{id}(id= ${s.id})}" th:text="${s.nombre}"></a></td>
+            <td th:text="${s.direccion}"></td>
+
+        </tr>
+
+    </table>
+
+    <a th:href="@{/sucursales/nueva}">Nueva sucursal</a>
+
+</body>
+</html>

@@ -24,4 +24,7 @@ public class LineasVentaDTO {
 
     @NotEmpty(message = "La venta es obligada")
     private Long idVenta;
+
+    private String nombre;
+    private Double precio;
 }

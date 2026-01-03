@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Listar Ventas</h1>
+
+    <table>
+
+        <th>
+
+            <td>Fecha</td>
+            <td>Sucursal</td>
+
+        </th>
+
+        <tr th:each="v : ${lista}">
+
+            <td><a th:href="@{/ventas/{id}(id=${v.id})}" th:text="${v.fecha}"></a></td>
+            <td th:text="${v.sucursal}"></td>
+        </tr>
+
+    </table>
+   
+    <a th:href="@{/ventas/nueva}">Nueva Venta</a>
+
+</body>
+</html>
