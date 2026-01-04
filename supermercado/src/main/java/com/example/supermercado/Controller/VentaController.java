@@ -42,13 +42,13 @@ public class VentaController {
 
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String listar(Model model) {
 
         List<VentaDTO> dto = vs.listarVentas();
         model.addAttribute("lista", dto);
 
-        return "/ventas/ventas";
+        return "/ventas/listar";
     }
 
     @GetMapping("/{id}")
@@ -62,7 +62,7 @@ public class VentaController {
         return "ventas/dettale";
     }
 
-    @GetMapping("/neva")
+    @GetMapping("/nueva")
     public String nueva(Model model) {
 
         VentaDTO dto = new VentaDTO();

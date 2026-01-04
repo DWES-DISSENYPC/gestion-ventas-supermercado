@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
-@RequestMapping("/producots")
+@RequestMapping("/productos")
 public class ProductoController {
 
     private ProductoService ps;
@@ -32,12 +32,12 @@ public class ProductoController {
 
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String listar(Model model) {
 
         List<ProductoDTO> dto = ps.listar();
         model.addAttribute("productos", dto);
-        return "productos/productos";
+        return "productos/listar";
     }
 
     @GetMapping("/{id}")
@@ -61,7 +61,7 @@ public class ProductoController {
     @PostMapping("/nuevo")
     public String nuevoPsot(@ModelAttribute @Valid ProductoDTO p, BindingResult result) {
         
-        if(result.hasErrors()) return "/productos/nuevo";
+        if(result.hasErrors()) return "productos/nuevo";
         ps.nuevo(p);
         return "redirect:/productos";
     }
@@ -70,7 +70,7 @@ public class ProductoController {
     public String editar(@PathVariable Long id, Model model) {
 
         Optional<ProductoDTO> opt = ps.mostrar(id);
-        if(opt.isEmpty()) return "/productos";
+        if(opt.isEmpty()) return "redirect:/productos";
         model.addAttribute("p", opt.get());
 
         return "productos/editar";
@@ -78,10 +78,10 @@ public class ProductoController {
 
     @PostMapping("/editar/{id}")
     public String postMethodName(@ModelAttribute @Valid ProductoDTO dto, BindingResult result) {
-        if( result.hasErrors()) return "productos/ediar";
+        if( result.hasErrors()) return "productos/editar";
         ps.nuevo(dto);
         
-        return "redirect: /productos";
+        return "redirect:/productos";
     }
 
     @GetMapping("/eliminar/{id}")
@@ -89,7 +89,7 @@ public class ProductoController {
 
         ps.eliminar(id);
 
-        return "redirect: /productos";
+        return "redirect:/productos";
     }
     
     

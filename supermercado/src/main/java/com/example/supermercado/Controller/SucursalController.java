@@ -33,12 +33,12 @@ public class SucursalController {
 
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String listar(Model model) {
 
         List<SucursalDTO> sucursales = ss.listar();
         model.addAttribute("sucursales", sucursales);
-        return "/sucursales/listar";
+        return "sucursales/listar";
     }
 
     @GetMapping("/{id}")
@@ -83,15 +83,15 @@ public class SucursalController {
         if(result.hasErrors()) return "Sucursales/editar";
         ss.guardar(s);
         
-        return "redirect:/sucursales/";
+        return "redirect:/sucursales";
     }
 
-    @GetMapping("/eliminar/{id}}")
+    @GetMapping("/eliminar/{id}")
     public String getMethodName(@PathVariable Long id) {
 
         ss.eliminar(id);
 
-        return "redirect/sucursales/";
+        return "redirect:/sucursales";
     }
     
     

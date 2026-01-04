@@ -5,19 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+
 <body>
     
+<header th:replace="fragments/header :: header"></header>
+
 <h1 th:text="|Detalle de la Sucursal: ${s.nombre}|"></h1>
 <p th:text="|Direccion: ${s.direccion}|"></p>
 
 <p>Listado de ventas:</p>
 <ul>
 
-    <li th:each="${v : s.lista}" th:text="${v.fecha}"></li>
+    <li th:each="v : ${s.lista}" th:text="${v.fecha}"></li>
 
 </ul>
 
-<a th:href="@{/sucursales/editar{id}(id=${s.id})}">Editar</a>
+<a th:href="@{/sucursales/editar/{id}(id=${s.id})}">Editar</a>
 <a th:href="@{/sucursales/eliminar/{id}(id=${s.id})}">Eliminar</a>
 <a th:href="@{/sucursales}">Volver a la lista</a>
 

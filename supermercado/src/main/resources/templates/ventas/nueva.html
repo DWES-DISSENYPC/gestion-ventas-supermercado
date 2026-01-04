@@ -3,9 +3,14 @@
 <head>
     <title>Nueva Venta</title>
 </head>
+
+
 <body>
 
 <h1>Nueva Venta</h1>
+
+
+<header th:replace="fragments/header :: header"></header>
 
 <!-- FORMULARIO PRINCIPAL -->
 <form th:action="@{/ventas/nueva}" th:object="${v}" method="post">

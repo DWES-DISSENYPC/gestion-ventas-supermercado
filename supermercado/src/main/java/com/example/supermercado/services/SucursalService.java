@@ -47,6 +47,7 @@ public class SucursalService {
 
     public void guardar(SucursalDTO dto) {
 
+
         Sucursal s = dtoToEntity(dto);
         sr.save(s);
 
@@ -62,7 +63,7 @@ public class SucursalService {
 
     private Sucursal dtoToEntity(SucursalDTO dto) {
         List<Venta> ventas = new ArrayList<>();
-        if (!dto.getLista().isEmpty()) {
+        if (!(dto.getLista() == null) && !dto.getLista().isEmpty()) {
             
         for (VentaDTO v : dto.getLista()){
 

@@ -22,7 +22,7 @@ public class ProductoDTO {
     @NotEmpty(message = "La categoria es obligado")
     private String categoria;
     
-    @NotEmpty(message = "El precio es obligado")
+    
     @Positive(message = "El precio debe ser positivo")
     private Double precio;
 

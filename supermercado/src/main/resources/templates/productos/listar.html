@@ -9,6 +9,8 @@
 
 <body>
 
+    <header th:replace="fragments/header :: header"></header>
+
     <h1>Lista de productos</h1>
 
 <table border="1" cellpadding="6" cellspacing="0"> 
@@ -33,7 +35,7 @@
         </tbody> 
     </table>
 
-
+<a th:href="@{/productos/nuevo}">Nuevo</a>
 
 </body>
 

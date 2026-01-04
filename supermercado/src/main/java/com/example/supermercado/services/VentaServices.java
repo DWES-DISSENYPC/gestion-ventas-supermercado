@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.example.supermercado.dto.LineasVentaDTO;
 import com.example.supermercado.dto.VentaDTO;
 import com.example.supermercado.model.LineasVenta;
@@ -12,13 +14,14 @@ import com.example.supermercado.model.Venta;
 import com.example.supermercado.repository.SucursalRepository;
 import com.example.supermercado.repository.VentaRepository;
 
+@Service
 public class VentaServices {
 
     private VentaRepository vr;
-    private LineaVentaSrvice ls;
+    private LineaVentaService ls;
     private SucursalRepository sr;
 
-    public VentaServices(VentaRepository vr, LineaVentaSrvice ls, SucursalRepository sr) {
+    public VentaServices(VentaRepository vr, LineaVentaService ls, SucursalRepository sr) {
 
         this.vr = vr;
         this.ls = ls;
